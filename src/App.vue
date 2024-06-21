@@ -1,17 +1,42 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div>
+      <el-select v-model="value" multiple placeholder="Select" style="width: 480px">
+          <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
+      </el-select>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  setup() {
+      const value = ref([]);
+      const options = [
+          {
+              value: 1,
+              label: '前端开发',
+          },
+          {
+              value: 2,
+              label: '后端开发',
+          },
+          {
+              value: 3,
+              label: '大数据分析',
+          },
+          {
+              value: 4,
+              label: 'AI算法工程师',
+          },
+      ];
+
+      return {
+        value,
+        options
+      }
+  },
 });
 </script>
 
